@@ -1,4 +1,4 @@
-package com.project.board.TestCode;
+package com.project.board.TestCode.Cotroller;
 
 import com.project.board.Contoller.Controller;
 import org.junit.Test;

@@ -7,10 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController //컨트롤러를 json을 반환하는 컨트롤러로 만들어준다
 public class Controller {
-    @GetMapping("/")
-    public String main(){
-        return "main";
-    }
     @GetMapping("/hello")
     public String hello(){
         return "hello";

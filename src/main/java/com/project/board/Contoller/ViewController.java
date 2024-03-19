@@ -1,7 +1,9 @@
 package com.project.board.Contoller;
 
 import com.project.board.DTO.posts.PostsResponseDto;
+import com.project.board.auth.dto.SessionUser;
 import com.project.board.service.PostsService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,9 +14,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 public class ViewController {
     private final PostsService postsService;
+    private final HttpSession httpSession;
     @GetMapping("/")
     public String main(Model model){
         model.addAttribute("posts",postsService.findAllDesc());
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        if(user!=null)
+            model.addAttribute("userName",user.getName());
         return "index";
     }
     @GetMapping("/posts/save")
